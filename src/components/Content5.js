@@ -1,14 +1,17 @@
-//Link ytb: https://www.youtube.com/watch?v=OOt2VRa1Oeg
-// Bài useEffect with dependencies
+// Bài useEffect() with DOM events
+// Link ytb: https://www.youtube.com/watch?v=xZcWHaGsKUQ
 
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
+
+
 
 const tabs = ["posts", "albums", "todos"]
 export default function Content4() {
 
     const [title, setTitle] = useState('');
     const [type, setType] = useState("posts");
-    const [posts, setPosts] = useState([])
+    const [posts, setPosts] = useState([]);
+    const [showGotoTop, setShowGotoTop] = useState(false);
 
     useEffect(() => {
         fetch(`https://jsonplaceholder.typicode.com/${type}`)
@@ -25,9 +28,31 @@ export default function Content4() {
         console.log('title change');
     }, [title]);
 
+    // Dùng useEffect(callback,[]) để addEventListener 1 lần 
+    useEffect(() => {
+        const handleScroll = () => {
+            setShowGotoTop(window.scrollY >= 200);
+        }
+        window.addEventListener('scroll', handleScroll);
+
+        // Cleanup function
+        // Hàm này sẽ được gọi khi component unmounted
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+            console.log('remove event scroll')
+        }
+    }, [])
+
     return (
         <div style={{ display: "flex", flexDirection: "column" }}>
             <h1>Content 4</h1>
+            {showGotoTop && <button
+                style={{ position: "fixed", right: 50, bottom: 50 }}
+                onClick={() => {
+                    window.scrollTo(0, 0);
+                    setShowGotoTop(false);
+                }}
+            >Go to top</button>}
             <input
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
