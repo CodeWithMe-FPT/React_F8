@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Content1 from "./components/Content1";
+import Content10 from "./components/Content10";
 import Content2 from "./components/Content2";
 import Content3 from "./components/Content3";
 import Content4 from "./components/Content4";
@@ -24,7 +25,8 @@ function App() {
       {/* {show && <Content6 />} */}
       {/* {show && <Content7 />} */}
       {/* {show && <Content8 />} */}
-      {show && <Content9 />}
+      {/* {show && <Content9 />} */}
+      {show && <Content10 />}
     </div>
 
   );

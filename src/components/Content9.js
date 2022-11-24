@@ -23,7 +23,7 @@ export default function Content9() {
     }, [image])
 
     return (
-        <div>
+        <div style={{ display: "flex", flexDirection: "column" }}>
             <input
                 type={"file"}
                 id="avatar"
