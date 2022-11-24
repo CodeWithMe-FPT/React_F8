@@ -10,6 +10,7 @@ export default function Content11() {
     let myInterval = useRef();
 
     const handleStart = () => {
+
         if (myInterval.current) {
             return;
         } else {
@@ -21,21 +22,24 @@ export default function Content11() {
             setTime(prev => {
                 if (prev === 1) {
                     clearInterval(myInterval.current)
-                    console.log('clear interval ' + myInterval.current)
+                    console.log('clear interval ' + myInterval.current + ' inside interval')
                     myInterval.current = undefined;
                 }
                 return prev - 1;
             })
         }, 1000)
         console.log('create interval ' + myInterval.current)
+
     }
 
     const handleStop = () => {
+
         if (myInterval.current) {
             clearInterval(myInterval.current);
-            console.log('clear interval ' + myInterval.current)
+            console.log('clear interval ' + myInterval.current + ' in handle stop')
             myInterval.current = undefined;
         }
+
     }
 
     return (
