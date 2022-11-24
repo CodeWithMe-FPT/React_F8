@@ -6,6 +6,8 @@ import Content4 from "./components/Content4";
 import Content5 from "./components/Content5";
 import Content6 from "./components/Content6";
 import Content7 from "./components/Content7";
+import Content8 from "./components/Content8";
+import Content9 from "./components/Content9";
 function App() {
 
   const [show, setShow] = useState(false);
@@ -20,7 +22,9 @@ function App() {
       {/* {show && <Content4 />} */}
       {/* {show && <Content5 />} */}
       {/* {show && <Content6 />} */}
-      {show && <Content7 />}
+      {/* {show && <Content7 />} */}
+      {/* {show && <Content8 />} */}
+      {show && <Content9 />}
     </div>
 
   );
