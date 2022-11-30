@@ -1,13 +1,18 @@
 // Bài useRef() hook
 // Link ytb: https://www.youtube.com/watch?v=qr1dQqRJRNo
 
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 
 export default function Content11() {
 
     const [time, setTime] = useState(5);
-    let myInterval = useRef();
+    const myInterval = useRef();
+    const prevTime = useRef(5);
+
+    useEffect(() => {
+        prevTime.current = time;
+    }, [time])
 
     const handleStart = () => {
 
@@ -41,6 +46,8 @@ export default function Content11() {
         }
 
     }
+
+    console.log(prevTime.current + " " + time);
 
     return (
         <>
